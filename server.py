@@ -36,9 +36,10 @@ def say_hello():
       </head>
       <body>
         <h1>Hi There!</h1>
-        <form action="/greet">
+        <form action="/diss">
           What's your name? <input type="text" name="person">
 
+          <!--
           How are you feeling?
 
           <label>Awesome</label>
@@ -52,6 +53,7 @@ def say_hello():
 
           <label>Neato</label>
           <input type="checkbox" name="compliment" value="neato"</input>
+          -->
 
           <input type="submit" value="Submit">
 
@@ -61,46 +63,46 @@ def say_hello():
     """
 
 
-@app.route("/greet")
-def greet_person():
-    """Get user by name."""
-
-    player = request.args.get("person")
-
-    compliment = request.args.get("compliment")
-
-    return """
-    <!doctype html>
-    <html>
-      <head>
-        <title>A Compliment</title>
-      </head>
-      <body>
-        Hi, {}! I think you're {}!
-      </body>
-    </html>
-    """.format(player, compliment)
-
-
-# @app.route("/diss")
-# def insult_person():
-#     """Insult the user by name."""
+# @app.route("/greet")
+# def greet_person():
+#     """Get user by name."""
 
 #     player = request.args.get("person")
 
-#     insult = choice(AWFULNESS)
+#     compliment = request.args.get("compliment")
 
 #     return """
 #     <!doctype html>
 #     <html>
-#         <head>
-#             <title> Hello! </title>
-#         </head>
-#         <body>
-#             Hi, {}! I think you're {}!
-#         </body>
+#       <head>
+#         <title>A Compliment</title>
+#       </head>
+#       <body>
+#         Hi, {}! I think you're {}!
+#       </body>
 #     </html>
-#     """.format(player, insult)
+#     """.format(player, compliment)
+
+
+@app.route("/diss")
+def insult_person():
+    """Insult the user by name."""
+
+    player = request.args.get("person")
+
+    insult = choice(AWFULNESS)
+
+    return """
+    <!doctype html>
+    <html>
+        <head>
+            <title> Hello! </title>
+        </head>
+        <body>
+            Hi, {}! I think you're {}!
+        </body>
+    </html>
+    """.format(player, insult)
 
 
 if __name__ == "__main__":
